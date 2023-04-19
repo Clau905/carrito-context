@@ -4,7 +4,7 @@ import Minav from './componentes/Minav/Minav.js';
 import ItemListContainer from './componentes/ItemListContainer/ItemListContainer.js';
 import Carrito from './componentes/Carrito/Carrito.js';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
-import {CarritoProvider} from '../CarritoContext/CarritoContext.js';
+import {CarritoProvider} from './CarritoContext/CarritoContext';
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 function App() {
 
