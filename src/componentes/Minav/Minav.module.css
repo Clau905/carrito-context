@@ -1,0 +1,44 @@
+
+
+
+
+.contenedorlink{
+    
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+   
+    align-items: center;
+
+    
+}
+
+
+h2{
+
+    font-size: 20px;
+    line-height: 20px;
+
+}
+a{
+    display:inline-flex;
+    width: 400px;
+    height: 40px;
+    
+    border:none;
+    font-size:1.2em;
+    margin:3px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    color: rgb(244, 244, 245);
+    background-color: green;
+    border:none;
+}
+a:hover{
+
+    background-color: beige;
+    color :red;
+
+
+}

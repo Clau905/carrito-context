@@ -1,0 +1,83 @@
+.modal{ 
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width:90%;
+    min-height: 30px;
+    max-height: 600px;
+   /*  scroll-behavior: auto;
+   overflow: scroll; */
+ 
+
+    justify-content:center;
+    background-color: rgb(203, 224, 197);
+    border:1px solid green;
+    }
+    .titulomodal{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        }
+.botonModalCerrado{
+    display:none;
+    height: 40px;
+    width: 40px;
+}
+.botonModalCerradoVer{
+    display:inline-block;
+    height: 40px;
+    width: 40px;
+}
+/* .contboton{
+    display:none;
+    justify-content: center;
+    align-items:center;
+    width: 100px;
+    background-color: orangered;
+    border:none;
+   
+    color: #fff;
+    margin-top:35px;
+    margin-left: 200px;
+    
+    
+    }
+    .contbotonSi{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        width: 100px;
+        background-color: orangered;
+        border:none;
+        height: 40px;
+        color: #fff;
+        margin-top:35px;
+        margin-left: 200px;
+        
+        
+        } */
+.boton{
+    margin-left: 100px;
+    line-height: 1.5em;
+    width: 40px;
+    height: 40px;
+    cursor:pointer;
+}
+.boton:hover{
+    margin-left: 100px;
+    line-height: 1.5em;
+    width: 40px;
+    height: 40px;
+    cursor:pointer;
+    color:#fff;
+    background-color: orangered;
+}
+
+.modalcerrado{
+    display:none;
+}
+
+.modal{
+    display:flex;
+}

@@ -1,0 +1,137 @@
+.contenedorCards{
+    cursor:none;
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    max-width:250px ;
+    height:450px;
+    width: 320px;
+    
+    padding-top: 10px;
+    font-size: 12px;
+    
+    justify-content:flex-start;
+    align-self: center;
+    align-items: center;
+    
+    
+    
+    background-color:#ffffff;
+    
+    
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
+    }
+    
+    
+    .texto{
+    
+        width: 90%;
+        
+        color:black;
+    }
+    .texto .precio{
+        display: inline-block;
+        margin-top: 5px;
+        font-style: bold;
+        font-size: 1.5em;
+        line-height:1.8em;
+        
+    }
+    .texto .stock{
+        text-align: right;
+        margin-top: 10px;
+        font-size: 1em;
+        color:green;
+        display: inline;
+    
+    }
+    .texto .desc{
+        display: inline;
+        margin-left:10px;
+        text-align: right;
+      
+    }
+    .codigoProd{
+        display: inline;
+        line-height: .8em;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+       
+    .imagenCards img{
+        width:200px;
+        height:290px;
+        object-fit:cover;
+    }.contenedorCompra{
+        display: grid;
+        grid-template-rows: 50% 50%;
+        width: 90%;
+        height:80px;  
+    }
+    
+    .stock{
+        margin-right: 40px;
+        color:green;
+    }
+    .contenedorContador{
+        display: flex ;
+        align-items:center;
+    
+       
+    }   
+    .contenedorContador button{
+      border:none;  
+      height: 30px;
+      width: 30px;
+    
+    }
+    .contenedorContador button:hover{
+    
+        background-color:green;
+        cursor:pointer;
+        color:white ;
+    }
+    
+    .contenedorContador p{
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size:14px;
+    }
+    
+    
+    
+
+.contenedorAgregarCarrito{
+
+    display: flex;
+
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    color :green;
+    border: 3px solid green;
+
+    font-size: 14px;
+    border-radius: 5px;
+
+}
+.contenedorAgregarCarrito button:hover{
+    cursor:point;
+    background-color: green;
+    color:white;
+    border:none;  
+}
+.contenedorAgregarCarrito button{
+width: 100%;
+height: 30px;
+align-items: center;
+justify-content: center;
+color :green;
+border-radius: 5px;
+border:none;
+font-size: 14px;
+border-radius: 1px;
+
+}
