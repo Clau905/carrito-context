@@ -1,9 +1,12 @@
 
-import estilos from  '../../componentes/Carro/Item.module.css';
-
-import {  RiDeleteBin2Fill} from 'react-icons/ri';  
-function Item(props){
+import estilos from  './RenglonCarro.module.css';
+import { useContext } from "react";
+import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {RiDeleteBin2Fill} from 'react-icons/ri';  
+function RenglonCarro(props){
+    const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
     const prod={
+            categ:props.prod.categ,
             foto:props.prod.foto,
             decripcion : props.prod.desc,
             precio:props.prod.precio,
@@ -11,16 +14,20 @@ function Item(props){
             cant:props.prod.cant,
             stock:props.prod.stock,
             subtot:parseInt(props.prod.cant)*parseFloat(props.prod.precio)
+
         }
+        const cadena = `/img/Joyas/${prod.categ}/${prod.foto}.jpg`;
+       
        
     return (
 
         <div className={estilos.contenedoritem}>
             <div className={estilos.imgcarro}>
-    
-                <img  className={estilos.imgcarro}  src={require(`../../img/${props.prod.foto}.jpg`)}
-                            alt='FOTO 1'  />
-             
+            
+                <img  className={estilos.imgcarro} 
+                src={cadena}
+                alt='FOTO 1'  />
+   
             </div>
         
         
@@ -35,16 +42,16 @@ function Item(props){
               
             </div>
             <div className={estilos.contenidoitem}>      
-                <p>{props.prod.cant} </p>  
+                <p>{props.prod.cantidad} </p>  
               
             </div>
             <div className={estilos.contenidoitem}>      
-                <p>{prod.subtot} </p>  
+                <p>{props.prod.cantidad*props.prod.precio} </p>  
               
             </div>
-        
-            <h2>
-            < RiDeleteBin2Fill /></h2>
+            <div className={estilos.eliminar}>
+            <button onClick={removerProd(props.prod)}> < RiDeleteBin2Fill /></button>
+            </div>
 
 
         </div>
@@ -53,4 +60,4 @@ function Item(props){
         
         }       
   
-export default Item;
+export default RenglonCarro;

@@ -1,7 +1,10 @@
-import { useState,useEffect } from "react";
-import Itemlist from '../ItemList/Itemlist';
+import { useState,useEffect } from 'react';
+import Item from '../../componentes/Item/Item';
+import estilos from '../ItemListContainer/ItemListContainer.module.css';
+import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import { useContext } from "react"; 
+import { getProductosByCateg } from '../../servicios/asyncMock';
 
-import { getProductosByCateg } from "../../servicios/asyncMock";
 
 const ItemListContainer = ({categ})=>{
    const [prods,setProds]=useState([]); 
@@ -16,11 +19,15 @@ const ItemListContainer = ({categ})=>{
                console.log("error ",error)
          })
    },[categ])
+   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
 
    return (
-      <div >
+      <div className={estilos.contenedorlist} >
+         
             <h1> {categ.toUpperCase()}</h1>
-            <Itemlist prods={prods} categ={categ} />
+            <div className={estilos.contenedorcarro}>
+               {prods.map(prod=> <Item key={prod.id} categ={prod.categ} foto={prod.foto} precio={prod.precio} stock={prod.stock}/>)}
+            </div>
       </div>
 
    )

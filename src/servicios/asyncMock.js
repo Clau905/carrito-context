@@ -4,9 +4,9 @@ const productos=[
     {
       categ:'anillos',
       foto:'ANILL·MA133·0',
-      desc:'ANILLO RED',
+      desc:'ANILLO RED MALLA CALADO',
       precio:3200,
-      stock : 4
+      stock : 10
     },
     {     
       categ:"anillos",
@@ -26,9 +26,9 @@ const productos=[
     {
     categ:'anillos',
     foto:'ANILL·PV1708·1',
-    desc:'DOBLE ',
+    desc:'DOBLE RED CALADO ',
     precio:16000,
-    stock : 4
+    stock : 10
     },
 // aros ------------------------
     {

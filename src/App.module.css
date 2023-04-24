@@ -10,6 +10,13 @@ body {
     color: black;
     font-size: 12px;
 }
+.contendorapp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+   
+}
 .cabecera{
     margin-top: 3px;
     height: 30%;
@@ -19,20 +26,27 @@ body {
     align-items: end;
     line-height: 2em;
 }
+.cabecera h2 {
+  
+   color: rgb(1, 17, 17);
+   
+}
 .navsuperior{
-    flex-direction: column;
-    margin-top: 30px;
     display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 30px;
+
     justify-content: center;
     align-items: center;
 }
-.contendorapp{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 90%;
-    border :1px solid black;
+.contenedormenu{
+    display:inline-flex ;
 }
-
+.carritover{
+   
+    align-items: center;
+    display:none;
+}
 
 
