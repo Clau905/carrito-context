@@ -2,10 +2,9 @@
 import estilos from  './ListarPedido.module.css';
 import RenglonCarro from  '../RenglonCarro/RenglonCarro';
 import { useContext } from "react";
-import {useCarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
 function ListarPedido(){
-    const {carrito,dispatch}=useCarritoContext();
-
+    const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
     const misProductos =carrito.prods;
    
        return (

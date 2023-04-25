@@ -7,17 +7,16 @@ import Carrito from './componentes/Carrito/Carrito.js';
 import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
 import {CarritoProvider} from './CarritoContext/CarritoContext';
-import {useCarritoContext} from './CarritoContext/CarritoContext';
+import {CarritoContext} from './CarritoContext/CarritoContext';
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
-import { useContext,useReducer } from "react"; 
+import { useContext } from "react"; 
 function App() {
- 
-  const [carrito,dispatch] =useContext(useCarritoContext);
-  const data=[carrito,dispatch] ;
+  
+  const {carrito, agregarProd, removerProd, vaciar, estaEnCarrito} = useContext(CarritoContext); 
+  const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
   return (
    <>
-      <CarritoProvider value={data}>
-      
+      <CarritoProvider value={{carrito,agregarProd,removerProd,vaciar,estaEnCarrito}}>
         <div className={estilos.cabecera}>
           <h2>Bienvenidos a mi E-commerce</h2>
         </div >

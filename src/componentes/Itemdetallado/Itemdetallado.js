@@ -2,7 +2,7 @@
 import { useState,useEffect,useContext } from "react";
 import estilos from './Itemdetallado.module.css' 
 import {getProductosById} from "../../servicios/asyncMock";
-import {useCarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
 
 import {FiMinusCircle} from 'react-icons/fi';
 import {FiPlusCircle} from "react-icons/fi";
@@ -16,7 +16,6 @@ const Itemdetallado = () => {
   const [cantidad, setCantidad] = useState(0); 
   const {foto}=useParams(); 
 
-  const { carrito, dispatch } = useCarritoContext();
  /*
 
   mi carrito es un objeto
@@ -47,16 +46,10 @@ const Itemdetallado = () => {
     cantidad:0
   }
 
-  function handleAgregar(e,prod,cant) {
-    e.preventDefault();
-    
-    dispatch({
-        accion:1,
-        value : prod,
-        cant : cant
-    });
+
+  const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
  
-}  
+ 
   return (
     <div className={estilos.contenedordetalle}>
     
@@ -96,7 +89,7 @@ const Itemdetallado = () => {
         </div>
         <div className= {estilos.contenedorAgregarCarrito} >
         
-          <button onClick={  (e)=> handleAgregar(e,miProd,cantidad)} >   AGREGAR AL CARRITO </button>
+          <button onClick={  (e)=> agregarProd=(prod,cantidad)} >   AGREGAR AL CARRITO </button>
         </div>
       
       
@@ -117,8 +110,8 @@ const Itemdetallado = () => {
     </div>  
  
   )
-}
 
+}
 export default Itemdetallado
 
 

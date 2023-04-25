@@ -1,36 +1,43 @@
-import { createContext,useReducer } from "react";
+import { createContext,useContext,useState } from "react";
 const CarritoContext = createContext();
-const carritoInicial ={
-    prods:[],
-    total:0 
-    }
-const useCarritoContext = () => {
-    return useCarritoContext(CarritoContext)
-}
-const miReducer=(carrito,accion)=>{
-    switch(accion.accion){
-        case 1:
-           
-            return {
-              //agregarProd
-            }
-            
-        case 2:
-            return 'vacia';
-    default: return carrito;
-    }
-}
-const agregarProd=(prod,cantidad)=>{
-    console.log('va a agregar ',prod)    
-} 
-const CarritoProvider= ({children})=> {  
-    const [carrito,dispatch]= useReducer(miReducer,carritoInicial);
-    const data =  {carrito,dispatch};
 
+const CarritoProvider= ({children})=> {
+    const [carrito,setCarrito]=useState({prods:[],total:0});
+    const agregarProd=(prod,cantidad)=>{
+    
+        prod.cantidad=cantidad;
+         setCarrito({
+             prods: carrito.prods.concat(prod),
+             total: (carrito.total)+(cantidad*prod.precio)   
+         });
+         console.log(carrito);
+         
+    } 
+  /*   const removerProd=(prod)=>{ 
+        const idProd = prod.foto;
+        const restar=  prod.precio*prod.cantidad;
+        setCarrito({
+        prods: carrito.prods.filter(a=>a.foto!=idProd),
+        total:carrito.total-restar
+         })
+    } */
+
+
+    const removerProd=()=>{}
+    const vaciar=()=>{
+    // deja el carrito vacio   
+      //  setCarrito({prods:[],total:0});
+    }
+    const estaEnCarrito=(prod)=>{
+    return (carrito.find(prod)===undefined?false:true);
+    // devuelve true o false
+    }
+    
+     const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
     return (
         <CarritoContext.Provider  value ={data} > 
             {children} 
         </CarritoContext.Provider>
     )
 };
-export { CarritoProvider ,useCarritoContext}
+export { CarritoProvider ,CarritoContext}

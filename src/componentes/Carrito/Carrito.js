@@ -2,12 +2,12 @@ import './Carrito.css';
 
 import { FaCartPlus } from "react-icons/fa";
 import {Link} from 'react-router-dom';
-import {useCarritoContext} from '../../CarritoContext/CarritoContext';
+import {CarritoContext} from '../../CarritoContext/CarritoContext';
 import { useContext } from "react"; 
 
 function Carrito(){
 
-    const { carrito, dispatch } = useCarritoContext();
+const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
 return(     
     <>
         <div style={{display:carrito.total>0?'block':'none'}}>
