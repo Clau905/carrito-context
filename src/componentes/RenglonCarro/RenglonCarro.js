@@ -1,10 +1,10 @@
 
 import estilos from  './RenglonCarro.module.css';
 import { useContext } from "react";
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {useCarritoContext} from '../../CarritoContext/CarritoContext.js';
 import {RiDeleteBin2Fill} from 'react-icons/ri';  
 function RenglonCarro(props){
-    const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+    const {carrito,dispatch}=useCarritoContext();
     const prod={
             categ:props.prod.categ,
             foto:props.prod.foto,
@@ -50,7 +50,8 @@ function RenglonCarro(props){
               
             </div>
             <div className={estilos.eliminar}>
-            <button onClick={removerProd(props.prod)}> < RiDeleteBin2Fill /></button>
+         {/*    <button onClick={removerProd(props.prod)}> < RiDeleteBin2Fill /></button>
+ */}            <button > < RiDeleteBin2Fill /></button>
             </div>
 
 

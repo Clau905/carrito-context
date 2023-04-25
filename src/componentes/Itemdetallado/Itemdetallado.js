@@ -2,7 +2,7 @@
 import { useState,useEffect,useContext } from "react";
 import estilos from './Itemdetallado.module.css' 
 import {getProductosById} from "../../servicios/asyncMock";
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {useCarritoContext} from '../../CarritoContext/CarritoContext.js';
 
 import {FiMinusCircle} from 'react-icons/fi';
 import {FiPlusCircle} from "react-icons/fi";
@@ -13,15 +13,17 @@ import { useParams } from "react-router-dom";
 
 const Itemdetallado = () => {
   const [prod,setProd]=useState([]);
-  const [cantidad, setCantidad] = useState(0);
+  const [cantidad, setCantidad] = useState(0); 
   const {foto}=useParams(); 
-  const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+
+  const { carrito, dispatch } = useCarritoContext();
  /*
 
   mi carrito es un objeto
   {prods[],total} 
   prods es un array
 
+  
   } */
  
  
@@ -45,6 +47,16 @@ const Itemdetallado = () => {
     cantidad:0
   }
 
+  function handleAgregar(e,prod,cant) {
+    e.preventDefault();
+    
+    dispatch({
+        accion:1,
+        value : prod,
+        cant : cant
+    });
+ 
+}  
   return (
     <div className={estilos.contenedordetalle}>
     
@@ -70,9 +82,11 @@ const Itemdetallado = () => {
           <div className={estilos.renglon}>
             
             <div className={estilos.stock}>
-              <h3> Stock: {prod.stock}</h3> <p>Cantidad</p>
+              <p> Stock: {prod.stock}</p>
             </div>
-        
+            <div className={estilos.cantidad}>
+               <p>Cantidad</p>
+            </div>
             <div className={estilos.contenedorContador}>
               <button  onClick={() => setCantidad(cantidad>0? cantidad - 1 : cantidad )     }>  {<FiMinusCircle className="App-logo" />}    </button>
               <p> {cantidad} </p>
@@ -81,7 +95,8 @@ const Itemdetallado = () => {
           </div>
         </div>
         <div className= {estilos.contenedorAgregarCarrito} >
-            <button onClick={  ()=> agregarProd(miProd,cantidad)} >   AGREGAR AL CARRITO </button>
+        
+          <button onClick={  (e)=> handleAgregar(e,miProd,cantidad)} >   AGREGAR AL CARRITO </button>
         </div>
       
       

@@ -70,7 +70,7 @@ const productos=[
     {
     categ:'pulseras',
     foto:'PULSE·IP1120·1',
-    desc:'INFINITO  ',
+    desc:'INFINITO CON STRASS ',
     precio:7400,
     stock : 2
     }, 

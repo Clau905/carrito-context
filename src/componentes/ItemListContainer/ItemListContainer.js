@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import Item from '../../componentes/Item/Item';
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {useCarritoContext} from '../../CarritoContext/CarritoContext.js';
 import { useContext } from "react"; 
 import { getProductosByCateg } from '../../servicios/asyncMock';
 
@@ -19,8 +19,8 @@ const ItemListContainer = ({categ})=>{
                console.log("error ",error)
          })
    },[categ])
-   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
-
+  
+   const { carrito, dispatch } = useCarritoContext();
    return (
       <div className={estilos.contenedorlist} >
          

@@ -1,20 +1,19 @@
 
 import estilos from './App.module.css';
 import Minav from './componentes/Minav/Minav.js';
-import ContenedorModales from './componentes/ContenerdorModales/ContenedorModales';
 
 import ItemListContainer from './componentes/ItemListContainer/ItemListContainer.js';
 import Carrito from './componentes/Carrito/Carrito.js';
 import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
 import {CarritoProvider} from './CarritoContext/CarritoContext';
-import {CarritoContext} from './CarritoContext/CarritoContext';
+import {useCarritoContext} from './CarritoContext/CarritoContext';
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
-import { useContext } from "react"; 
+import { useContext,useReducer } from "react"; 
 function App() {
- //const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext)
- const data =useContext(CarritoContext);
-
+ 
+  const [carrito,dispatch] =useContext(useCarritoContext);
+  const data=[carrito,dispatch] ;
   return (
    <>
       <CarritoProvider value={data}>

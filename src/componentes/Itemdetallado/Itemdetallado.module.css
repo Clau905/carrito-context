@@ -35,8 +35,8 @@
 
     }
 .imagenCards img{
-    width:500px;
-    height:800px;
+    width:450px;
+    height:600px;
     object-fit:cover;
     margin-top:30px;
     margin-bottom: 5px;
@@ -65,53 +65,50 @@
     text-align: center;
     margin-bottom: 100px;     
 }
-.texto .stock{
-    text-align: left;
-    margin-top: 10px;
-    font-size: 1,5em;
-    color:green;
-    display: inline;
-}
-.texto .desc{
-    display: inline;
-    margin-left:10px;
-    text-align: right;
-      
-}
 
+
+.renglon{
+    display:flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center; 
+    justify-content:flex-end;
+
+}
        
 
 .stock{
-    display:inline-block;
-    font-size: 1.5em;
-    margin-right: 40px;
-    color:green;
-    width: 40%;
-}
-.renglon{
     display:flex;
-    flex-direction: row;
-    align-items: center; 
-    justify-content: center;
-
-}
-.stock p{
-    font-size: .8em;
-    display:inline-block; 
-    color: grey;  
+    justify-content: flex-start;
+    font-size: 1.5em;
     
-    text-align: right;
-   
-}
-.stock h3{
-    font-size: .8em;
-    display:inline-block; 
     color:green;
-    margin-right: 14px;  
-    font-weight: 100;  
    
 }
- 
+
+.renglon .stock p{
+    display: flex;
+    justify-content:space-between;
+    font-size: .8em;
+    display:inline; 
+    color: rgb(97, 22, 22);  
+    
+    text-align: left;
+    margin-right: 3px;
+}
+
+.renglon .cantidad p{
+    display: flex;
+
+    justify-content:end;
+    font-size: 1em;
+    display:inline; 
+    margin-left: 60px;
+    color: rgb(141, 137, 137);  
+    
+    text-align: left;
+    margin-right: 3px;
+} 
 .contenedorContador{
     padding: 3px;
     border-radius: 3px;
@@ -123,6 +120,7 @@
        
 }  
 .contenedorContador p{
+  
     display: inline;
     width: 20px;
     text-align: center;
@@ -209,12 +207,14 @@
 
 .volver{
 
-    display: flex;
+    
+    display :flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
+    width: 100%;
     margin-left: 5px;
     margin-top: 5px;
+    text-align: left;
     font-size: 14px;
     background-color: none;
     color:black;
