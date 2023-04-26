@@ -89,7 +89,7 @@ const Itemdetallado = () => {
         </div>
         <div className= {estilos.contenedorAgregarCarrito} >
         
-          <button onClick={  (e)=> agregarProd=(prod,cantidad)} >   AGREGAR AL CARRITO </button>
+          <button onClick={  (e)=> agregarProd(prod,cantidad)} >   AGREGAR AL CARRITO </button>
         </div>
       
       

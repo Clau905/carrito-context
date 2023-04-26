@@ -4,11 +4,23 @@ import estilos from '../ItemListContainer/ItemListContainer.module.css';
 import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
 import { useContext } from "react"; 
 import { getProductosByCateg } from '../../servicios/asyncMock';
-
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({categ})=>{
    const [prods,setProds]=useState([]); 
-  
+   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+   const {borrar}=useParams(); 
+   useEffect(()=>{
+      if (borrar===undefined){}
+         else{
+ 
+            if (borrar.trim() ==='borrar'){
+     
+               const a =vaciar()
+            }
+         }   
+   },[])
+
    useEffect(()=>{
     
       getProductosByCateg(categ)

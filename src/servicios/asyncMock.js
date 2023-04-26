@@ -63,8 +63,8 @@ const productos=[
     {
     categ:'pulseras',
     foto:'PULSE·IP1072·1',
-    desc:'ARMONIA ',
-    precio:9400,
+    desc:'ARMONIA RMO  ROMA PLATA',
+    precio:1000.20,
     stock : 3
     }, 
     {

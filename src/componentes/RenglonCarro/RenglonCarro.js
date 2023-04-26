@@ -17,7 +17,7 @@ function RenglonCarro(props){
 
         }
         const cadena = `/img/Joyas/${prod.categ}/${prod.foto}.jpg`;
-       
+        
        
     return (
 
@@ -33,25 +33,31 @@ function RenglonCarro(props){
         
             <div className={estilos.contenidocodigo}>
                 <p>{props.prod.foto} </p>  
-                <h3>{props.prod.desc} </h3>  
+               
              
             </div>  
-          
-            <div className={estilos.contenidoitem}>      
-                <p>{props.prod.precio} </p>  
+
+            <div className={estilos.contenidoprecio}>      
+                <p>{props.prod.desc} </p>  
               
             </div>
-            <div className={estilos.contenidoitem}>      
+
+
+   
+            <div className={estilos.contenidoprecio}>      
+                <p>${props.prod.precio} </p>  
+              
+            </div>
+            <div className={estilos.contenidocant}>      
                 <p>{props.prod.cantidad} </p>  
               
             </div>
             <div className={estilos.contenidoitem}>      
-                <p>{props.prod.cantidad*props.prod.precio} </p>  
+                <p>${props.prod.cantidad*props.prod.precio} </p>  
               
             </div>
             <div className={estilos.eliminar}>
-         {/*    <button onClick={removerProd(props.prod)}> < RiDeleteBin2Fill /></button>
- */}            <button > < RiDeleteBin2Fill /></button>
+            <button onClick={(e) => removerProd(e, props.prod, props.prod.cantidad)}> < RiDeleteBin2Fill  style={{ fontSize: 30 }}/></button>
             </div>
 
 

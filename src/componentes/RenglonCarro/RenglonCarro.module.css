@@ -33,7 +33,7 @@
        
     }
     .contenidoitem{
-        width:90px;
+        width:100px;
         display:flex;
         text-align: center;
         flex-direction: row;
@@ -43,24 +43,71 @@
         justify-content: center;
       
     }
-    .contenidocodigo{
-        width:200px;
+    .contenidoitem p{
+        width:100px;
         display:flex;
         text-align: center;
-        flex-direction: column;
+        flex-direction: row;
+        
+        justify-content: center;
+      
+    }
+    .contenidoprecio p{
+        width:100px;
+        display:flex;
+     
+        flex-direction: row;
+        margin-left:5px;
+        margin-right: 5px;
+       
+        justify-content: flex-end;
+      
+    }
+    .contenidocodigo{
+        width: 140px;
+        display:flex;
+        text-align: center;
+      
         margin-left:10px;
       
     }
-    .contenidocodigo h3{
-       font-size: .9em;
-       color:green;
+    .contenidocodigo p{
+        width:300px;
+        display:flex;
+        text-align: center;
+       
+        margin-left:10px;
       
     }
-     .eliminar{
-        margin-left: 70px;
+    .contenedoritem h3{
+        width:300px;
+        display:flex;
+        text-align: center;
+       
+       margin-left:10px;
+       font-size: .9em;
+       color:green;
+
+      
+    }
+     .eliminar button{
+        width: 30px;
         color:red;
         margin-right: 5px;
+        background: none;
     }
-    .eliminar:hover{
+    .eliminar button:hover{
     cursor: pointer;
+    }
+    
+    .contenidocant p{
+        width:30px;
+        display:flex;
+     
+        flex-direction: row;
+        margin-left:5px;
+        margin-right: 5px;
+       
+        justify-content: flex-end;
+      
     }

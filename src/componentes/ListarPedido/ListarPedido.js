@@ -2,11 +2,13 @@
 import estilos from  './ListarPedido.module.css';
 import RenglonCarro from  '../RenglonCarro/RenglonCarro';
 import { useContext } from "react";
+import {Link} from 'react-router-dom';
 import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import Carrito from '../Carrito/Carrito';
 function ListarPedido(){
     const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
-    const misProductos =carrito.prods;
-   
+    //const misProductos =carrito.prods;
+       
        return (
         
         <div className={estilos.contenedorcarro}>  
@@ -15,13 +17,19 @@ function ListarPedido(){
             </div>
             <div className= {estilos.carrodetalle}>
                     
-                    {misProductos.map( (it) => <RenglonCarro     prod= {it}    >       </RenglonCarro>   ) }
+                    {carrito.prods.map( (it) => <RenglonCarro     prod= {it}    >       </RenglonCarro>   ) }
         
             </div>
-            <div className= {estilos.resumen}>
 
-            <button>Vaciar Carro de Compras</button>
+           
+
+        
+            <div className= {estilos.resumen}>
+            <div className={estilos.total}><p>Total Pedido: $ {carrito.total}</p></div>
+                <Link to={`/anillos/borrar`} >Vaciar Carro de Compras </Link> 
             </div>
+    
+           
         </div>
 
     )

@@ -12,11 +12,11 @@ import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import { useContext } from "react"; 
 function App() {
   
-  const {carrito, agregarProd, removerProd, vaciar, estaEnCarrito} = useContext(CarritoContext); 
-  const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
+ // const {carrito, agregarProd, removerProd, vaciar, estaEnCarrito} = useContext(CarritoContext); 
+ // const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
   return (
    <>
-      <CarritoProvider value={{carrito,agregarProd,removerProd,vaciar,estaEnCarrito}}>
+      <CarritoProvider >
         <div className={estilos.cabecera}>
           <h2>Bienvenidos a mi E-commerce</h2>
         </div >
@@ -36,7 +36,7 @@ function App() {
     
           <Route   path='/item/:foto' element= { <ItemDetallado  /> } />
           <Route   path='/pedido' element= { <ListarPedido  /> } />
-
+          <Route   path='/anillos/:borrar' element= {<ItemListContainer  categ = 'anillos'  />} />
           </Routes>
           </div>
           </BrowserRouter>
