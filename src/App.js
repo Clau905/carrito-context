@@ -7,7 +7,7 @@ import Carrito from './componentes/Carrito/Carrito.js';
 import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
 import {CarritoProvider} from './CarritoContext/CarritoContext';
-import {CarritoContext} from './CarritoContext/CarritoContext';
+
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import { useContext } from "react"; 
 function App() {
