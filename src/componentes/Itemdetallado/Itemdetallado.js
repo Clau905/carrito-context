@@ -1,21 +1,22 @@
 
 import { useState,useEffect,useContext } from "react";
 import estilos from './Itemdetallado.module.css' 
-import {getProductosById} from "../../servicios/asyncMock";
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
 
-import {FiMinusCircle} from 'react-icons/fi';
-import {FiPlusCircle} from "react-icons/fi";
+import {CarritoContext} from '../Data/context/CarritoContext.js';
+
+import {Link} from 'react-router-dom';
 
 import {AiFillBackward} from "react-icons/ai";
 
 import { useParams } from "react-router-dom";
+import BotonContador from '../BotonContador/BotonContador'
+import { ProductContext } from "../Data/context/ProductContext";
 
 const Itemdetallado = () => {
-  const [prod,setProd]=useState([]);
   const [cantidad, setCantidad] = useState(0); 
+  const [prod, setProd] = useState({});
   const {foto}=useParams(); 
-
+  
  /*
 
   mi carrito es un objeto
@@ -24,8 +25,8 @@ const Itemdetallado = () => {
 
   
   } */
- 
- 
+  const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+ const {getProds,getProductosById}= useContext(ProductContext);
   useEffect(()=>{
       getProductosById(foto)
         .then(response =>{setProd(response)
@@ -46,17 +47,30 @@ const Itemdetallado = () => {
     cantidad:0
   }
 
+  const agregar=(cant)=>{
+  
+    setCantidad(cant);
+    miProd.cantidad=cant;
+    agregarProd(miProd,cant);
+  
+  
+  }
 
-  const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
- 
- 
+  const volver=()=>{
+  
+  }
+
+const categ= prod.categ;
+
+console.log(' vuelvo al\  la catego ',categ)
   return (
     <div className={estilos.contenedordetalle}>
     
       <div className={estilos.contenedorIzq}> 
         <div className={estilos.volver}> 
-          <button>  {< AiFillBackward className="App-logo" style={{ fontSize: 30 }} />} </button>
-          <p>Volver</p>
+        <Link to={`/${categ}`} >Volver </Link> 
+       {/*     {< AiFillBackward className="App-logo" style={{ fontSize: 30 }} />}  */}
+         
         </div>
         <div className={estilos.imagenCards}>
           <img            
@@ -72,7 +86,7 @@ const Itemdetallado = () => {
             <p className={estilos.precio}>${prod.precio} </p>  
           </div>
         
-          <div className={estilos.renglon}>
+
             
             <div className={estilos.stock}>
               <p> Stock: {prod.stock}</p>
@@ -80,19 +94,21 @@ const Itemdetallado = () => {
             <div className={estilos.cantidad}>
                <p>Cantidad</p>
             </div>
-            <div className={estilos.contenedorContador}>
-              <button  onClick={() => setCantidad(cantidad>0? cantidad - 1 : cantidad )     }>  {<FiMinusCircle className="App-logo" />}    </button>
-              <p> {cantidad} </p>
-              <button  onClick={() => setCantidad(cantidad<prod.stock?cantidad+1:cantidad) }>    {<FiPlusCircle  className="App-logo"   />}      </button>      
-            </div>
-          </div>
-        </div>
-        <div className= {estilos.contenedorAgregarCarrito} >
         
-          <button onClick={  (e)=> agregarProd(prod,cantidad)} >   AGREGAR AL CARRITO </button>
+          <div     style={{display:!cantidad>0?'flex':'none'}}>  
+            <BotonContador 
+              inicial={0}   stock={prod.stock}  onAdd={agregar}/>
+          </div>   
+        
         </div>
-      
-      
+
+
+        <div  style={{display:cantidad>0?'block':'none'}}>
+            
+            { <Link to={`/pedido`} >FINALIZAR COMPRA </Link>   }
+    
+        </div>
+           
         <div className= {estilos.etiqueta} >
           <p >MATERIAL: </p>
           <p className={estilos.material}>Plata 925 </p> 

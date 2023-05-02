@@ -1,7 +1,7 @@
 
 import estilos from  './RenglonCarro.module.css';
 import { useContext } from "react";
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {CarritoContext} from '../Data/context/CarritoContext';
 import {RiDeleteBin2Fill} from 'react-icons/ri';  
 function RenglonCarro(props){
     const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);

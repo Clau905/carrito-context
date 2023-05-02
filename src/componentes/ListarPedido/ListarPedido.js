@@ -3,7 +3,7 @@ import estilos from  './ListarPedido.module.css';
 import RenglonCarro from  '../RenglonCarro/RenglonCarro';
 import { useContext } from "react";
 import {Link} from 'react-router-dom';
-import {CarritoContext} from '../../CarritoContext/CarritoContext.js';
+import {CarritoContext} from '../Data/context/CarritoContext';
 import Carrito from '../Carrito/Carrito';
 function ListarPedido(){
     const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);

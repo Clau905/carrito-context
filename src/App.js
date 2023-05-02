@@ -6,7 +6,8 @@ import ItemListContainer from './componentes/ItemListContainer/ItemListContainer
 import Carrito from './componentes/Carrito/Carrito.js';
 import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
-import {CarritoProvider} from './CarritoContext/CarritoContext';
+import {CarritoProvider} from './componentes/Data/context/CarritoContext';
+
 
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import { useContext } from "react"; 
@@ -36,6 +37,7 @@ function App() {
     
           <Route   path='/item/:foto' element= { <ItemDetallado  /> } />
           <Route   path='/pedido' element= { <ListarPedido  /> } />
+         {/*  <Route   path='/guardar' element= { <GuardarItems /> } /> */}
           <Route   path='/anillos/:borrar' element= {<ItemListContainer  categ = 'anillos'  />} />
           </Routes>
           </div>

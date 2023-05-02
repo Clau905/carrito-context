@@ -20,6 +20,7 @@ const CarritoProvider= ({children})=> {
         e.preventDefault();
         const idProd = prod.foto;
         const restar=  prod.precio*prod.cantidad;
+        console.log('elimina un prod',prod)
         setCarrito({
             prods: carrito.prods.filter(a=>a.foto!==idProd),
             total:carrito.total-restar

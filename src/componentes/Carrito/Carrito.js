@@ -1,8 +1,8 @@
 import './Carrito.css';
 
 import { FaCartPlus } from "react-icons/fa";
-import {Link} from 'react-router-dom';
-import {CarritoContext} from '../../CarritoContext/CarritoContext';
+
+import {CarritoContext} from '../Data/context/CarritoContext';
 import { useContext } from "react"; 
 
 function Carrito(){
@@ -15,9 +15,7 @@ return(
                 {< FaCartPlus  className="App-logo"   />}  
                 <p>${carrito.total} </p>
             </div>
-            <div className='vercarro'>
-                <Link to={`/pedido`} >Ver Pedido </Link> 
-            </div>
+    
         </div>
        
     </>
