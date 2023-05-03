@@ -12,9 +12,7 @@ import {CarritoProvider} from './componentes/Data/context/CarritoContext';
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import { useContext } from "react"; 
 function App() {
-  
- // const {carrito, agregarProd, removerProd, vaciar, estaEnCarrito} = useContext(CarritoContext); 
- // const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
+    
   return (
    <>
       <CarritoProvider >

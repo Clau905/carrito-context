@@ -17,16 +17,9 @@ const Itemdetallado = () => {
   const [prod, setProd] = useState({});
   const {foto}=useParams(); 
   
- /*
 
-  mi carrito es un objeto
-  {prods[],total} 
-  prods es un array
-
-  
-  } */
   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
- const {getProds,getProductosById}= useContext(ProductContext);
+  const {getProds,getProductosById}= useContext(ProductContext);
   useEffect(()=>{
       getProductosById(foto)
         .then(response =>{setProd(response)

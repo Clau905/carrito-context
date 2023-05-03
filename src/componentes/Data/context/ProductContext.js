@@ -13,7 +13,7 @@ const ProductProvider= ({children})=> {
         getProds()
             .then((rods)=>{
                 setProds(prods);
-console.log('    ENCONTEXT PRODS ',prods)
+
             })
             .catch((error) => {
 

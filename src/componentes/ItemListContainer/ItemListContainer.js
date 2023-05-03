@@ -3,20 +3,15 @@ import Item from '../../componentes/Item/Item';
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
 import {CarritoContext} from '../Data/context/CarritoContext.js';
 import { useContext } from "react"; 
-import { getProds } from '../Data/services/services.js';
+//import { getProds } from '../Data/services/services.js';
 import { useParams } from "react-router-dom";
-import { ProductProvider } from '../Data/context/ProductContext';
-
-
-
-
-
-const ItemListContainer = ({categ})=>{
-
- 
-   const [prods,setProds]=useState([]); 
+import { ProductProvider,ProductContext } from '../Data/context/ProductContext';
+const ItemListContainer = ({categ})=>{ 
    const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
    const {borrar}=useParams(); 
+   const {getProds,setProds,prods,getProductosById}=useContext(ProductContext);
+
+    
    useEffect(()=>{
       if (borrar===undefined){}
          else{
@@ -31,17 +26,17 @@ const ItemListContainer = ({categ})=>{
    useEffect(()=>{
     
       const getProdsData = async () => {
-          const resul = await getProds(categ)
-          .then(response =>  {         
-              setProds(response)
-          })
+         const resul = await getProds(categ);
+              
+         setProds(resul);
+          
       }
       getProdsData()
            
   
    },[categ]);
 
-  console.log('prods ....... ',prods)
+ 
   
    return (
       <ProductProvider>

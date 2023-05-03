@@ -33,9 +33,9 @@ export const getProductosById= async(iD)=>{
         .then(response =>  {
          
             console.log('el map tiene ',response.docs)    
-            const misProdsAdapted= response.docs.map(doc =>Adapter(doc))
+            const lista= response.docs.map(doc =>Adapter(doc))
 
-            return misProdsAdapted;
+            return lista;
         })
         .catch(error => {
             console.log(error)
@@ -59,18 +59,19 @@ export const getProds= async(categoria)=>{
     const collectionRef1= query(collection(db,'productos'));
 
     //getDocs para recuperar los documentos de la colección de Firebase
-    const resul =await getDocs(collectionRef1)
-        .then(response =>  {
-         
-            console.log('el map tiene ',response.docs)    
-            const misProdsAdapted= response.docs.map(doc =>Adapter(doc))
+    const response =await getDocs(collectionRef1)  
+    const lista= response.docs.map((producto) =>{
 
-            return misProdsAdapted;
-        })
-        .catch(error => {
-            console.log(error)
-        })
+
+        return {
+            id:producto.id,
+             ...producto.data()    
+
+        }
+
             
+        })
+    return lista  
     //Usamos el método map para obtener cada uno de los documentos contenidos en el array docs. Cada documento es un objeto con la propiedad data,
     // que contiene todos los datos asociados a ese documento.
 
