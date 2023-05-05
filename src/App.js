@@ -10,11 +10,11 @@ import {CarritoProvider} from './componentes/Data/context/CarritoContext';
 
 
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
-import { useContext } from "react"; 
 function App() {
     
   return (
    <>
+    
       <CarritoProvider >
         <div className={estilos.cabecera}>
           <h2>Bienvenidos a mi E-commerce</h2>
@@ -33,9 +33,9 @@ function App() {
           <Route   path ='/aros'      element={ <ItemListContainer  categ = 'aros'     /> } />
           <Route   path ='/cadenas'   element={ <ItemListContainer  categ = 'cadenas'  /> } />
     
-          <Route   path='/item/:foto' element= { <ItemDetallado  /> } />
+          <Route   path='/item/:iD' element= { <ItemDetallado   /> } />
           <Route   path='/pedido' element= { <ListarPedido  /> } />
-         {/*  <Route   path='/guardar' element= { <GuardarItems /> } /> */}
+        
           <Route   path='/anillos/:borrar' element= {<ItemListContainer  categ = 'anillos'  />} />
           </Routes>
           </div>
@@ -43,6 +43,7 @@ function App() {
        
        
     </CarritoProvider>
+    
     </>
   )   
  }

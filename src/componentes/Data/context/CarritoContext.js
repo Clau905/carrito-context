@@ -4,6 +4,7 @@ import { createContext,useContext,useState } from "react";
 const CarritoContext = createContext();
 
 const CarritoProvider= ({children})=> {
+    const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
     const agregarProd=(prod,cantidad)=>{
     
@@ -35,15 +36,12 @@ const CarritoProvider= ({children})=> {
        
     }
     
-
-
-
     const estaEnCarrito=(prod)=>{
     return (carrito.find(prod)===undefined?false:true);
     // devuelve true o false
     } 
     
-    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito};      
+    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod};      
     return (
         <CarritoContext.Provider  value ={data} > 
             {children} 

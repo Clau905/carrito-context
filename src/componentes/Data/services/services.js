@@ -11,73 +11,33 @@ import{
     doc
 }
 from 'firebase/firestore';
-import {Adapter} from '../adapters/prodsAdapter'
-  
-
+//import {Adapter} from '../adapters/prodsAdapter'
+import { fromDbToApp } from '../adapters/prodsAdapter'
 
 
 export const getProductosById= async(iD)=>{
-   
-    const collectionRef = query(collection(db,'productos'), where('id', '==', iD)) 
-
-
-
-    const collectionRef1= query(collection(db,'productos'));
-
-
-      console.log('ref collection ',collectionRef1)  
-
-
-    //getDocs para recuperar los documentos de la colección de Firebase
-    const resul=await getDocs(collectionRef1)
-        .then(response =>  {
-         
-            console.log('el map tiene ',response.docs)    
-            const lista= response.docs.map(doc =>Adapter(doc))
-
-            return lista;
-        })
-        .catch(error => {
-            console.log(error)
-        })
-            
-    //Usamos el método map para obtener cada uno de los documentos contenidos en el array docs. Cada documento es un objeto con la propiedad data,
-    // que contiene todos los datos asociados a ese documento.
-
-       
-    // con la ayuda del operador spread, construimos un nuevo objeto que contiene el id del documento y los datos asociados,
-    // y este nuevo objeto lo añadimos a la lista de productos llamada prods.
-
-
+    const collectionRef = query(collection(db,'productos'), where( "id", "==", iD)) 
+    const response =await getDocs(collectionRef)  
+  console.log('en servicios x id ',response.docs.length)   //esta longitud da cero
+    const dataAdapted = response.docs.map((doc) => fromDbToApp(doc));
+    return dataAdapted;
 }
+////******************************************** */
 export const getProds= async(categoria)=>{
    
     const collectionRef = categoria ? query(collection(db,'productos'), where('categ', '==', categoria.trim())) 
     : collection(db,'productos');
 
-
-    const collectionRef1= query(collection(db,'productos'));
-
-    //getDocs para recuperar los documentos de la colección de Firebase
-    const response =await getDocs(collectionRef1)  
+    const response =await getDocs(collectionRef)  
     const lista= response.docs.map((producto) =>{
-
-
         return {
             id:producto.id,
              ...producto.data()    
 
         }
-
-            
+   
         })
     return lista  
-    //Usamos el método map para obtener cada uno de los documentos contenidos en el array docs. Cada documento es un objeto con la propiedad data,
-    // que contiene todos los datos asociados a ese documento.
-
-       
-    // con la ayuda del operador spread, construimos un nuevo objeto que contiene el id del documento y los datos asociados,
-    // y este nuevo objeto lo añadimos a la lista de productos llamada prods.
-
+    
 
 }

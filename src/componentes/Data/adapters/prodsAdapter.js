@@ -1,19 +1,18 @@
-export const  Adapter = (doc)=>{
+ export const  Adapter = (doc)=>{
+    const data = doc.data();
+    const dataAdapted ={
 
-
-const campos = doc.data();
-console.log('en adapter ',campos)
-
-
-const prodsAdapter ={
-id : doc.id,
-foto:campos.foto,
-precio:campos.precio,
-stock:campos.stock
-
+        id:doc.id,
+        ...data()   
+    }
+return dataAdapted;
 }
-
-
-return prodsAdapter;
-
-}
+export const fromDbToApp = (doc) => {
+    const id = doc.id;
+    const data = doc.data();
+  console.log('en adapter doc ',doc)
+    return {
+      Id: id,
+      Info: data,
+    };
+  };

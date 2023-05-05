@@ -3,14 +3,13 @@ import Item from '../../componentes/Item/Item';
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
 import {CarritoContext} from '../Data/context/CarritoContext.js';
 import { useContext } from "react"; 
-//import { getProds } from '../Data/services/services.js';
 import { useParams } from "react-router-dom";
-import { ProductProvider,ProductContext } from '../Data/context/ProductContext';
-const ItemListContainer = ({categ})=>{ 
-   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
-   const {borrar}=useParams(); 
-   const {getProds,setProds,prods,getProductosById}=useContext(ProductContext);
+import { getProds, } from '../Data/services/services';
 
+const ItemListContainer = ({categ})=>{ 
+   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod}=useContext(CarritoContext);
+   const {borrar}=useParams(); 
+   const [prods,setProds]=useState([]);
     
    useEffect(()=>{
       if (borrar===undefined){}
@@ -26,10 +25,8 @@ const ItemListContainer = ({categ})=>{
    useEffect(()=>{
     
       const getProdsData = async () => {
-         const resul = await getProds(categ);
-              
-         setProds(resul);
-          
+         setProds( await getProds(categ));
+      
       }
       getProdsData()
            
@@ -39,15 +36,16 @@ const ItemListContainer = ({categ})=>{
  
   
    return (
-      <ProductProvider>
+    
       <div className={estilos.contenedorlist} >
          
-            <h1> {categ}</h1>
+      <h1> {categ.toUpperCase()}</h1>
+        
             <div className={estilos.contenedorcarro}>
-               {prods.map(prod=> <Item key={prod.id} categ={prod.categ} foto={prod.foto} precio={prod.precio} stock={prod.stock}/>)}
+            {prods.map(prod=> <Item iD={prod.id} desc = {prod.desc} categ={prod.categ} foto={prod.foto} precio={prod.precio} stock={prod.stock}/>)}
             </div>
       </div>
-      </ProductProvider>
+     
    )
   
 } 

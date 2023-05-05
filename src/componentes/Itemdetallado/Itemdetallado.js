@@ -1,69 +1,53 @@
 
-import { useState,useEffect,useContext } from "react";
+import { useState,useContext,useEffect } from "react";
 import estilos from './Itemdetallado.module.css' 
-
 import {CarritoContext} from '../Data/context/CarritoContext.js';
-
 import {Link} from 'react-router-dom';
-
-import {AiFillBackward} from "react-icons/ai";
-
 import { useParams } from "react-router-dom";
 import BotonContador from '../BotonContador/BotonContador'
-import { ProductContext } from "../Data/context/ProductContext";
+import { getProductosById } from "../Data/services/services";
 
 const Itemdetallado = () => {
   const [cantidad, setCantidad] = useState(0); 
-  const [prod, setProd] = useState({});
-  const {foto}=useParams(); 
-  
-
   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
-  const {getProds,getProductosById}= useContext(ProductContext);
-  useEffect(()=>{
-      getProductosById(foto)
-        .then(response =>{setProd(response)
-     
-        })
-        .catch(error =>{
-              console.log("error ",error)
-        })
-  },[foto]) 
+  const iD=useParams(); 
+  const [prod,setProd]=useState({})
 
-  const miProd={
+  useEffect(()=>{ 
+    getProductosById(iD).then(producto => {
+      console.log('busco el producto ',iD)
+      console.log('y encuentra ',producto)
+      setProd(producto);
+    })
+    .catch(err => {
+      console.log('errrrrror ',err)
+    });
 
-    categ:prod.categ,
-    foto:prod.foto,
-    desc:prod.desc,
-    precio:prod.precio,
-    stock :prod.stock,
-    cantidad:0
-  }
+    },[])
 
-  const agregar=(cant)=>{
-  
+
+
+
+    
+const agregar=(cant)=>{
+   
     setCantidad(cant);
-    miProd.cantidad=cant;
-    agregarProd(miProd,cant);
-  
-  
+    prod.cantidad=cant;
+    agregarProd(prod,cant);
+ 
   }
-
+  //const categ= prod.categ;
   const volver=()=>{
   
   }
 
-const categ= prod.categ;
-
-console.log(' vuelvo al\  la catego ',categ)
   return (
+   
     <div className={estilos.contenedordetalle}>
     
       <div className={estilos.contenedorIzq}> 
         <div className={estilos.volver}> 
-        <Link to={`/${categ}`} >Volver </Link> 
-       {/*     {< AiFillBackward className="App-logo" style={{ fontSize: 30 }} />}  */}
-         
+            <Link to={`/${prod.categ}`} >Volver </Link> 
         </div>
         <div className={estilos.imagenCards}>
           <img            

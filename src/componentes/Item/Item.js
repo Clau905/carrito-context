@@ -1,12 +1,13 @@
 import estilos from './../Item/Item.module.css';
+
+import { useContext,useEffect } from "react"; 
 import {Link} from 'react-router-dom';
 
+const Item =  ({iD,categ,foto,desc, precio,stock}) =>  {
 
-const Item =  ({categ,foto,desc, precio,stock}) => {
- 
+
   return(
 
-   
         <div className={estilos.contenedorCards}>
          
           <div className={estilos.imagenCards}>
@@ -22,7 +23,7 @@ const Item =  ({categ,foto,desc, precio,stock}) => {
           </div>
           <div  className={estilos.botonDetalle}>
         
-            <Link to={`/item/${foto}`} >Ver detalle </Link> 
+            <Link to={`/item/${iD}`} >Ver detalle </Link> 
           </div>
          
         </div>  
