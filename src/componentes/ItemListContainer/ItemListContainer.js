@@ -33,8 +33,6 @@ const ItemListContainer = ({categ})=>{
   
    },[categ]);
 
- 
-  
    return (
     
       <div className={estilos.contenedorlist} >

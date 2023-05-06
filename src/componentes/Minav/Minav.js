@@ -9,7 +9,7 @@ function Minav(){
            <Link to={'/aros'}> Aros</Link>
            <Link to={'/pulseras'}> Pulseras</Link>
            <Link to={'/cadenas'}> Cadenas</Link>
-           <Link to={'/guardar'}> Crud</Link>
+           
         </Link>
     )
 }    

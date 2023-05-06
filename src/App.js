@@ -7,7 +7,7 @@ import Carrito from './componentes/Carrito/Carrito.js';
 import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
 import {CarritoProvider} from './componentes/Data/context/CarritoContext';
-
+import Checkout from './componentes/Checkout/Checkout';
 
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 function App() {
@@ -35,7 +35,7 @@ function App() {
     
           <Route   path='/item/:iD' element= { <ItemDetallado   /> } />
           <Route   path='/pedido' element= { <ListarPedido  /> } />
-        
+          <Route   path='/checkout' element= { <Checkout  /> } />
           <Route   path='/anillos/:borrar' element= {<ItemListContainer  categ = 'anillos'  />} />
           </Routes>
           </div>

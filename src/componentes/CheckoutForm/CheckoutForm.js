@@ -1,21 +1,19 @@
 import React, {useState} from 'react';
-import firebase from 'firebase';
-
-const Form = () => {
+//import firebase from 'firebase';
+import estilos from '../CheckoutForm/CheckoutForm.module.css'
+const CheckoutForm = () => {
     const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
-    const [dni, setDni] = useState('');
+    const [phone, setPhone] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-
+        e.preventDefault();;
+/* 
         const db = firebase.firestore();
         db.collection('users').add({
             name,
-            surname,
             email,
-            dni
+            phone
         })
         .then(() => {
             alert('Datos guardados correctamente');
@@ -26,38 +24,37 @@ const Form = () => {
         })
         .catch(error => {
             console.log(error);
-        });
+        }); */
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div className={estilos.content} >
+        <h4>Checkout</h4>    
+        <form className={estilos.content}  onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Nombre"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onBlur={(e) => setName(e.target.value)}
             />
             <input
                 type="text"
-                placeholder="Apellido"
-                value={surname}
-                onChange={(e) => setSurname(e.target.value)}
+                placeholder="Telefono"
+                value={phone}
+                onBlur={(e) => setPhone(e.target.value)}
             />
             <input
                 type="text"
                 placeholder="Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onBlur={(e) => setEmail(e.target.value)}
             />
-            <input
-                type="text"
-                placeholder="DNI"
-                value={dni}
-                onChange={(e) => setDni(e.target.value)}
-            />
-            <input type="submit" value="Enviar" />
+           
+            <button type="submit" value="Crear Orden" >Crear Orden</button>
         </form>
+    </div>
+    
     )
 }
 
-export default Form;
+export default CheckoutForm;

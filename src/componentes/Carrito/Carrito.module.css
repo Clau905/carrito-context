@@ -1,13 +1,16 @@
-.carrito-total{
+.carritototal{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.2rem;
     color:rgb(84, 126, 50);
-    display:inline;
-    
+    height: 40px;
     margin-left: 20px;
 
 }
-.carrito-total p{
+.carritototal p{
     display:inline;
+    margin-left: 5px;
 }
 .vercarro{
     display:inline-flex;

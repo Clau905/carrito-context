@@ -6,18 +6,19 @@ import {Link} from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import BotonContador from '../BotonContador/BotonContador'
 import { getProductosById } from "../Data/services/services";
+import { AiFillBackward } from "react-icons/ai";
+
 
 const Itemdetallado = () => {
   const [cantidad, setCantidad] = useState(0); 
   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
-  const iD=useParams(); 
+  const {iD} =useParams(); 
   const [prod,setProd]=useState({})
-
-  useEffect(()=>{ 
+  
+    useEffect(()=>{ 
     getProductosById(iD).then(producto => {
-      console.log('busco el producto ',iD)
-      console.log('y encuentra ',producto)
-      setProd(producto);
+           setProd(producto);
+          
     })
     .catch(err => {
       console.log('errrrrror ',err)
@@ -47,7 +48,7 @@ const agregar=(cant)=>{
     
       <div className={estilos.contenedorIzq}> 
         <div className={estilos.volver}> 
-            <Link to={`/${prod.categ}`} >Volver </Link> 
+            <Link to={`/${prod.categ}`} >{< AiFillBackward  className="App-logo"  style={{ fontSize: 30 }} />}</Link> <p>Volver</p>
         </div>
         <div className={estilos.imagenCards}>
           <img            

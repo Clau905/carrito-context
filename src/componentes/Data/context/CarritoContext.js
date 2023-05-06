@@ -7,21 +7,24 @@ const CarritoProvider= ({children})=> {
     const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
     const agregarProd=(prod,cantidad)=>{
-    
+        
         prod.cantidad=cantidad;
-      
-        setCarrito({
-             prods: carrito.prods.concat(prod),
-             total: (carrito.total)+(cantidad*prod.precio)   
+        if ( !estaEnCarrito(prod.id) ) {
+            setCarrito({
+                prods: carrito.prods.concat(prod),
+                total: (carrito.total)+(cantidad*prod.precio)   
         });
-       
-         
+
+        }
+        else{ 
+            alert('Producto ya agregado')
+        }
+        
     } 
     const removerProd=(e,prod,cantidad)=>{ 
         e.preventDefault();
         const idProd = prod.foto;
         const restar=  prod.precio*prod.cantidad;
-        console.log('elimina un prod',prod)
         setCarrito({
             prods: carrito.prods.filter(a=>a.foto!==idProd),
             total:carrito.total-restar
@@ -33,13 +36,12 @@ const CarritoProvider= ({children})=> {
             {prods: [],
             total:0}
         )
-       
     }
-    
-    const estaEnCarrito=(prod)=>{
-    return (carrito.find(prod)===undefined?false:true);
-    // devuelve true o false
-    } 
+   
+    const estaEnCarrito=(id)=>{
+        const cantidad =carrito.prods.filter(a=>a.id==id).length;
+        return (cantidad==0?false:true);
+    }
     
     const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod};      
     return (

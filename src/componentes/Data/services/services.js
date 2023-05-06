@@ -3,7 +3,9 @@ import db from '../../../config/firebase';
 
 import{
     collection,
+    setDoc,
     getDocs,
+    getDoc,
     addDoc,
     query,
     where,
@@ -12,17 +14,16 @@ import{
 }
 from 'firebase/firestore';
 //import {Adapter} from '../adapters/prodsAdapter'
-import { fromDbToApp } from '../adapters/prodsAdapter'
-
-
+//import { fromDbToApp } from '../../_BORRAR/adapters/prodsAdapter'
 export const getProductosById= async(iD)=>{
-    const collectionRef = query(collection(db,'productos'), where( "id", "==", iD)) 
-    const response =await getDocs(collectionRef)  
-  console.log('en servicios x id ',response.docs.length)   //esta longitud da cero
-    const dataAdapted = response.docs.map((doc) => fromDbToApp(doc));
-    return dataAdapted;
+    const collectionRef =doc(db,'productos', iD) 
+    const response =await getDoc(collectionRef)  
+    return {
+        id: response.id,
+        ...response.data()
+    }//
 }
-////******************************************** */
+
 export const getProds= async(categoria)=>{
    
     const collectionRef = categoria ? query(collection(db,'productos'), where('categ', '==', categoria.trim())) 
@@ -41,3 +42,13 @@ export const getProds= async(categoria)=>{
     
 
 }
+
+
+
+const citiesRef = collection(db, "cities");
+export const guardarOrden= async()=>{
+    await setDoc(doc(citiesRef, "BJ"), {
+        name: "Beijing", state: null, country: "China",
+        capital: true, population: 21500000,
+        regions: ["jingjinji", "hebei"] });
+    }
