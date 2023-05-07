@@ -22,13 +22,13 @@ function ListarPedido(){
             </div>
             <div className= {estilos.carrodetalle}>
                     
-                    {carrito.prods.map( (it) => <RenglonCarro     prod= {it}    >       </RenglonCarro>   ) }
+                    {carrito.prods.map( (it) => <RenglonCarro   key={it.id}  prod= {it}    >       </RenglonCarro>   ) }
         
             </div>
             <div className= {estilos.resumen}>
            
                 <div className={estilos.total}>
-                    <p>Total Pedido: $ {carrito.total}</p>
+                    <p>Total Pedido: $ {Math.round(carrito.total)}</p>
                 </div>
                 <div className={estilos.checkout}>
                     <Link to={`/anillos/borrar`} >Vaciar Carro </Link>  

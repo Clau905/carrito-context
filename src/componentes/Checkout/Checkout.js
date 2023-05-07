@@ -1,8 +1,7 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext  } from 'react';
 import { FaCartPlus } from "react-icons/fa";
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
 import {CarritoContext} from '../Data/context/CarritoContext.js';
-import { useContext } from "react"; 
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { Timestamp, writeBatch, } from 'firebase/firestore';
 import db from '../../config/firebase'
@@ -22,11 +21,13 @@ import{
 }
 from 'firebase/firestore';
 import { getProds } from '../Data/services/services';
+import { CrearOrden } from '../Data/services/services';
 
 
+ const Checkout = () => {
 
-const Checkout = () => {
-
+  const createO=()=>{console.log('creaate o')}
+  /*const {orden,setOrden}=useContext(CarritoContext);
   const [loading,setLoading]=useState(false);
   const [orderId,setOrderId]=useState('');
   const {carrito,vaciar }=  useContext(CarritoContext)
@@ -40,6 +41,7 @@ const Checkout = () => {
           total:carrito.total,
           fecha: Timestamp.fromDate(new Date())
     }
+    setOrden(objOrden);
     const  batch =async()=>{ writeBatch(db)};
     const outOfStock = [];
     const productsRef= collection(db,'productos');
@@ -78,24 +80,24 @@ const Checkout = () => {
       setLoading(false);
     }
   }
+ */
 
-
-  if(loading){
+ /*  if(loading){
       return <h2> SE ESTA GENERANDO SU ORDEN ...</h2>
   }
   if(orderId){
     return <h2> SU ORDEN es: {orderId} </h2>
   }
 
-
+ */
   return(
 
-      <div>  
-        <div className={estilos.carritototal}>
-                {< FaCartPlus  className="App-logo"  style={{ fontSize: 30 }}  />}  
+       
+      <div className={estilos.carritototal}>
+             {/*    {< FaCartPlus  className="App-logo"  style={{ fontSize: 30 }}  />}  
                 <p>${carrito.total} </p>
-            </div>
-        <CheckoutForm onConfirm= {createOrder}/>
+            </div> */}
+        <CheckoutForm onConfirm= {createO}/>
       </div>
 
 

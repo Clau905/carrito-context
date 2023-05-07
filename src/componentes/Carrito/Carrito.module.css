@@ -8,6 +8,15 @@
     margin-left: 20px;
 
 }
+.carritototal a{
+    color:green;
+    display:inline;
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    background:none;
+    padding-top: 5px;
+}
 .carritototal p{
     display:inline;
     margin-left: 5px;

@@ -40,7 +40,7 @@ const ItemListContainer = ({categ})=>{
       <h1> {categ.toUpperCase()}</h1>
         
             <div className={estilos.contenedorcarro}>
-            {prods.map(prod=> <Item iD={prod.id} desc = {prod.desc} categ={prod.categ} foto={prod.foto} precio={prod.precio} stock={prod.stock}/>)}
+            {prods.map(prod=> <Item key={prod.id} iD={prod.id} categ={prod.categ} foto={prod.foto} precio={prod.precio} />)}
             </div>
       </div>
      

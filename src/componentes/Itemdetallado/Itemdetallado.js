@@ -37,10 +37,6 @@ const agregar=(cant)=>{
     agregarProd(prod,cant);
  
   }
-  //const categ= prod.categ;
-  const volver=()=>{
-  
-  }
 
   return (
    

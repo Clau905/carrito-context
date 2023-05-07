@@ -53,7 +53,7 @@ function RenglonCarro(props){
               
             </div>
             <div className={estilos.contenidoitem}>      
-                <p>${props.prod.cantidad*props.prod.precio} </p>  
+                <p>${Math.round(props.prod.cantidad*props.prod.precio)} </p>  
               
             </div>
             <div className={estilos.eliminar}>

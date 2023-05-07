@@ -1,11 +1,22 @@
 import { createContext,useContext,useState } from "react";
-
+import { Timestamp} from 'firebase/firestore';
 
 const CarritoContext = createContext();
 
 const CarritoProvider= ({children})=> {
     const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
+    const [orden,setOrden]=useState({},[],0, Timestamp.fromDate(new Date()));
+
+/*     const objOrden={
+        comprador:{nombre,phone,email},
+        items:carrito.prods,
+        total:carrito.total,
+        fecha: Timestamp.fromDate(new Date())
+  } */
+
+
+
     const agregarProd=(prod,cantidad)=>{
         
         prod.cantidad=cantidad;
@@ -43,7 +54,17 @@ const CarritoProvider= ({children})=> {
         return (cantidad==0?false:true);
     }
     
-    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod};      
+    
+    
+    
+    
+    
+    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,orden,setOrden};      
+    
+
+    
+    
+    
     return (
         <CarritoContext.Provider  value ={data} > 
             {children} 
