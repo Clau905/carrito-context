@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import Item from '../../componentes/Item/Item';
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
-import {CarritoContext} from '../Data/context/CarritoContext.js';
+import {CarritoContext} from '../Data/context/CarritoContext';
 import { useContext } from "react"; 
 import { useParams } from "react-router-dom";
 import { getProds, } from '../Data/services/services';
@@ -34,16 +34,16 @@ const ItemListContainer = ({categ})=>{
    },[categ]);
 
    return (
-    
+      <>
+      <h3 className={estilos.categoria}> {categ.toUpperCase()}</h3>
       <div className={estilos.contenedorlist} >
          
-      <h1> {categ.toUpperCase()}</h1>
-        
-            <div className={estilos.contenedorcarro}>
+       
+         <div className={estilos.contenedorcarro}>
             {prods.map(prod=> <Item key={prod.id} iD={prod.id} categ={prod.categ} foto={prod.foto} precio={prod.precio} />)}
-            </div>
+         </div>
       </div>
-     
+      </>
    )
   
 } 

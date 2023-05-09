@@ -6,6 +6,7 @@
     color:rgb(84, 126, 50);
     height: 40px;
     margin-left: 20px;
+    border:none;
 
 }
 .carritototal a{
@@ -16,6 +17,7 @@
     height: 40px;
     background:none;
     padding-top: 5px;
+    border: none;
 }
 .carritototal p{
     display:inline;

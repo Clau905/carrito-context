@@ -1,76 +1,59 @@
 
 import {useState,useContext, useEffect} from "react"; 
-import { CarritoContext } from '../Data/context/CarritoContext';
+import {CarritoContext} from '../Data/context/CarritoContext';
 import estilos from '../CheckoutForm/CheckoutForm.module.css'
-//import db from '../../config/firebase';
-import { Timestamp, writeBatch, } from 'firebase/firestore';
-import { Crear } from '../Data/services/services';
-/* import{
-    collection,
-    setDoc,
-    getDocs,
-    getDoc,
-    addDoc,
-    query,
-    where,
-    orderBy,
-    doc,
-    documentId
-  }
-from 'firebase/firestore';
-//import {GuardarOrden } from '../Data/services/services'; */
-
+import { Timestamp } from 'firebase/firestore';
+import { CrearOrdenDB } from '../Data/services/services';
+/* s */
 
 const CheckoutForm = () => {
-    const {carrito,vaciar,orden,setOrden }=  useContext(CarritoContext)
+    const {carrito,vaciar,orden,setOrden,loading,setLoading,orderId,setOrderId }=  useContext(CarritoContext)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-   // const [datosOk,setDatosOk]= useState(false);
-
-   
-     const  GuardarOrden=()=> {
-        setOrden({
-            comprador:{name,phone,email},
-            items:carrito.prods,
-            total:carrito.total,
-            fecha: Timestamp.fromDate(new Date())
-        })
-        console.log('Mi Orden ',orden);
-       
-         Crear(orden,carrito)
-    }
-     
-    const handleSubmit = (e) => {
-        
-        e.preventDefault();
-    
-        let datosOk=false;
-        let mens='';
+       useEffect(()=>{
            
+     },[orderId])
+    function Validar(){
+        let mens=''; 
+        let datosOk = false   
         if (name.length>0){          
             if (phone.length>0){   
-                if (email.length>0){   
-                        datosOk=true
-                }else
-                    { mens='Debe agregarse un Email'}
-                }else
-                { mens='El telefono es obligatorio y debe contener solo nros'}
+                if (email.length>0) {datosOk=true}
+                else { mens='Debe agregarse un Email'}       
             }
-            else
-                { mens='Debe ingresarse un nombre'
-            }
+            else { mens='El telefono es obligatorio y debe contener solo nros'}
+        }   
+        else
+            { mens='Debe ingresarse un nombre'}
+            
         
-            if (datosOk===false){alert(mens)
-            }
-       
-        if (datosOk===true){
-            GuardarOrden();
-        }else{
-          
-        }
-       
+        if (datosOk===false)
+            {alert(mens)}
+        return datosOk
     }
+    const GuardarOrden=()=> {    
+        if (Validar()===true ){ 
+      
+            setOrden( {
+               name:name,
+               phone:phone,
+               email:email,
+               items:carrito.prods,
+               total:carrito.total,
+               fecha: Timestamp.fromDate(new Date()) })
+
+            console.log('carrito antes es ',name,carrito)
+            console.log('la orden antes es ',orden)
+            
+            CrearOrdenDB(orden,carrito, vaciar,orden,setOrden,loading,setLoading,setOrderId) 
+        } 
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        GuardarOrden();
+    }
+
     return (
         <div className={estilos.content} >
         <h4>Checkout</h4>    
@@ -96,9 +79,10 @@ const CheckoutForm = () => {
 
             <button type="submit" value="Crear Orden"  >Crear Orden</button>
         </form>
-    </div>
-    
-    )
-}
 
+        
+        </div>
+    )
+ 
+}    
 export default CheckoutForm;

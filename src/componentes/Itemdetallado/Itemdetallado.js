@@ -31,11 +31,11 @@ const Itemdetallado = () => {
 
     
 const agregar=(cant)=>{
-   
+    if (cant>0){
     setCantidad(cant);
     prod.cantidad=cant;
     agregarProd(prod,cant);
- 
+    }
   }
 
   return (
@@ -76,13 +76,13 @@ const agregar=(cant)=>{
         
         </div>
 
-
+        <div className={'estilos.finalizar'}>
         <div  style={{display:cantidad>0?'block':'none'}}>
             
             { <Link to={`/pedido`} >FINALIZAR COMPRA </Link>   }
     
         </div>
-           
+        </div>  
         <div className= {estilos.etiqueta} >
           <p >MATERIAL: </p>
           <p className={estilos.material}>Plata 925 </p> 

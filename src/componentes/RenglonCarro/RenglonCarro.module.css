@@ -15,12 +15,6 @@
     margin-top: 4px;
     margin-left: 20px;
     }
-
-
-
-
-
-
     .imgcarro{
         display:flex;
         justify-content: center;
@@ -52,8 +46,16 @@
         justify-content: center;
       
     }
-    .contenidoprecio p{
+    .subtot {
         width:100px;
+        display:flex;
+        margin-left: 10px;
+        flex-direction: row;
+        justify-content: end;
+      
+    }
+    .contenidoprecio p{
+        width:90px;
         display:flex;
      
         flex-direction: row;
@@ -64,6 +66,14 @@
       
     }
     .contenidocodigo{
+        width: 140px;
+        display:flex;
+        text-align: center;
+      
+        margin-left:10px;
+      
+    }
+    .desc{
         width: 140px;
         display:flex;
         text-align: center;
@@ -104,7 +114,7 @@
     }
     
     .contenidocant p{
-        width:30px;
+        width:60px;
         display:flex;
      
         flex-direction: row;

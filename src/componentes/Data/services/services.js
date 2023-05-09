@@ -8,6 +8,7 @@ import { Timestamp, writeBatch, } from 'firebase/firestore';
 import {Adapter} from '../Adapter/Adapter';
 import{
     collection,
+    updateDoc,
     setDoc,
     getDocs,
     getDoc,
@@ -20,8 +21,7 @@ import{
     setData
   }
 from 'firebase/firestore';
-
-//import { fromDbToApp } from '../../_BORRAR/adapters/prodsAdapter'
+//const {carrito,vaciar,orden,setOrden }=  useContext(CarritoContext)
 
 export const getProductosById= async(iD)=>{
     const collectionRef =doc(db,'productos', iD) 
@@ -41,68 +41,30 @@ export const getProds= async(categoria)=>{
     const datosAdaptados=Adapter(response);
     return datosAdaptados 
 }  
-export  const Crear = async(orden,carrito) => {
+
+export  const CrearOrdenDB = async(orden,carrito,vaciar,setOrden,loading,setLoading,setOrderId) => {
+
+  
+  console.log('va a crear:' ,orden)
+  //setLoading(1);
+  const ventas = collection(db,"orders")
+  addDoc(ventas, orden)
+  .then((resp) => {
+    carrito.prods.forEach((item) => {
+       const docRef = doc(db, 'productos', item.id)
+       getDoc(docRef)
+           .then((dbDoc) => {
+             updateDoc(docRef, {stock: dbDoc.data().stock - item.cantidad})
+          })
+   })
+  
+  setOrderId(resp.id)
  
-
-  //const [orderId,setOrderId] = useState('');
-    
-  //const [loading,setLoading] = useState(false);
-    
-  //setLoading(true);
-    
-  try { 
-    const batch =async()=>{ writeBatch(db)};
-    const outOfStock = [];
-    const productsRef= collection(db,'productos');
-    // aqui busco los id de los documentos de mi carrito
-    const ids = carrito.prods.map(prod=>prod.id)
-    // traigo solo los productos de dB que contengan los Ids (del carrito)
-    const q = query(collection(db, "productos"), where(documentId(),'in', ids));
-    const lista = await getDocs(q);
-          
-    // ahora adapto los resultados
-    const adaptados = lista.docs.map((producto) =>{
-      return {
-                id:producto.id,
-                 ...producto.data()    
-    
-      }
-    })          
-    //actualiza stock
-    updateStock(carrito.prods,adaptados )
-   
-         
-}
-catch (error){
-        //console.log(error)
-        }
-finally {
-              console.log('finally')
-             // setLoading(false);
-  }
-}
+  vaciar();
+  setLoading(2);
 
 
-export const updateStock = async (productsInCart, cart) => {
+})
+.catch((error)=> console.log(error))
 
-    const batch = writeBatch(db);
-    productsInCart.forEach(a => {
-        //const productsAdapted = Adapter(doc); ya vienen aaptados
-        const stockDb = a.stock;
-        const productAddedToCart = cart.find(prod => prod.id === a.id)
-        const prodQuantity = productAddedToCart?.quantity;
-        console.log('cart carrito ',productsInCart)
-        console.log('endb ',cart)
-        //bajo la cantidad en stock de acuerdo a lo que se compró de cada producto
-        
-        
-        console.log ('ref id  ',`'${a.id}'`) 
-        //const collectionRef =doc(db,'productos', iD) 
-        
-        const referencia =doc(db,'productos',`'${a.id}'`) 
-      
-        batch.update(referencia, { stock: stockDb - prodQuantity })
-        console.log('commit')
-    })
-    await batch.commit()
 }

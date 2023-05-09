@@ -1,9 +1,9 @@
 
 .contenedorBoton{
     display: block;
-   
+    
     padding: 3px;
-
+    width: 370px;
     margin-bottom: 2px;
    
        
@@ -83,7 +83,7 @@
 
     
     .agregarCarrito a{
-        width: 100%;
+        width: 370px;
         height: 30px;
         background-color: green;
         align-items: center;

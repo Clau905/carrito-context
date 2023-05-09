@@ -14,9 +14,7 @@ const Item =  ({iD,categ,foto, precio,}) =>  {
             <img  src= { `/img/Joyas/${categ}/${foto}.jpg`} alt='FOTO 1'  />
           </div>
           <div className={estilos.texto}>
-        {/*     <p className={estilos.codigoProd}>{foto} </p>   */}
-           {/*  <p className={estilos.desc}>{desc}</p> */}
-                <br></br>
+          <br/><br/>
             <p className={estilos.precio}>${precio} </p>  
             <br/>
             {/* <p className={estilos.precio}>Stock: {stock} </p>   */}

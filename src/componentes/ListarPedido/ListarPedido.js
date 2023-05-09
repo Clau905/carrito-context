@@ -18,7 +18,7 @@ function ListarPedido(){
 
         <div  className={estilos.contenedorcarro}   style={{display:carrito.total>0?'block':'none'}}  >  
             <div className={estilos.carrosuperior}   >
-               <p>Foto</p> <p>Codigo</p>  <p>Descripcion</p> <p>Precio </p> <p>Cantidad</p><p>Subtotal</p>  
+               <p className={estilos.carroFoto}>Foto</p> <p>Codigo</p>  <p className={estilos.desc}>Descripcion</p> <p className={estilos.precio}>Precio </p> <p className={estilos.cant}>Cant.</p><p className={estilos.subtotal}>Subt.</p>  
             </div>
             <div className= {estilos.carrodetalle}>
                     

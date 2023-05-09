@@ -7,13 +7,8 @@ const CarritoProvider= ({children})=> {
     const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
     const [orden,setOrden]=useState({},[],0, Timestamp.fromDate(new Date()));
-
-/*     const objOrden={
-        comprador:{nombre,phone,email},
-        items:carrito.prods,
-        total:carrito.total,
-        fecha: Timestamp.fromDate(new Date())
-  } */
+    const [loading,setLoading]=useState(0);
+    const [orderId,setOrderId]=useState('');
 
 
 
@@ -59,7 +54,7 @@ const CarritoProvider= ({children})=> {
     
     
     
-    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,orden,setOrden};      
+    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,orden,setOrden,loading,setLoading,orderId,setOrderId};      
     
 
     

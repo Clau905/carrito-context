@@ -1,9 +1,10 @@
 .contenedorcarro{
+box-sizing: border-box;
 display:block;
 width:700px;
 min-height: 60px;
 max-height: 600px;
-
+margin-top: 5px;
 background-color: rgb(202, 211, 208);
 margin-left:40px;
 padding-right: 20px;
@@ -24,6 +25,7 @@ overflow: scroll;
     flex-direction:row;
     align-items: center;
     height: 30px;
+   
 }
 
 .carrodetalle{
@@ -37,14 +39,14 @@ flex-direction: column;
 .carrosuperior p{
     display:flex;
     justify-content: center; 
-    width:90px;
     flex-direction: row;
-    background-color: rgb(167, 235, 229);
-    margin-right: 2px;
+  
     text-align: center;
+    width:100px;
     margin-left: 20px;
     font-size: 1em;
     font-weight: 500;
+  
 }
 
 .carrosuperior a{
@@ -55,7 +57,7 @@ flex-direction: column;
     flex-direction: row;
     background-color:green;
     color:white;
-    margin-right: 2px;
+  
     text-align: center;
     font-size: 1em;
     font-weight: 500;
@@ -67,15 +69,40 @@ flex-direction: column;
     border:1px solid green;
 
 }
-.carrosuperior p{
+.carrosuperior .carroFoto{
     font-size: 1em;
-  
-    width:150px;
+    width:90px;
     flex-direction: row;
-    background-color: rgb(167, 235, 229);
     margin-right: 2px; text-align: center; 
 }
+.carrosuperior .desc {
+    font-size: 1em;
+    width:140px;
+    flex-direction: row;
+    text-align: center; 
+}
 
+.carrosuperior .precio{
+    font-size: 1em;
+  
+    width:90px;
+    flex-direction: row;
+    text-align: center; 
+}
+.carrosuperior .subtotal{
+    font-size: 1em;
+  
+    width:60px;
+    flex-direction: row;
+    text-align: center; 
+}
+.carrosuperior .cant{
+    font-size: 1em;
+  
+    width:60px;
+    flex-direction: row;
+    text-align: center; 
+}
 .resumen{
     display: flex;
     flex-direction: column;

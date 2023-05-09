@@ -1,44 +1,42 @@
 
-
-
-
 .contenedorlink{
     
-    display:inline-flex;
+    display:flex;
     flex-direction: row;
     flex-wrap: nowrap;
-   
     align-items: center;
+  
+    width: 500px;
+    height: 40px;
+   
+    font-size:1.2em;
+    margin:3px;
+    text-decoration: none;
+    justify-content: start;
+    border: none;
 
-    
 }
-
-
-h2{
+.conenedorlink h2{
 
     font-size: 20px;
     line-height: 20px;
 
 }
-a{
-    display:inline-flex;
-    width: 400px;
+
+
+.contenedorlink a{
+    display:flex;
+    width: 450px;
+    background-color:green;
+    color :white;
     height: 40px;
-    
-    border:none;
-    font-size:1.2em;
-    margin:3px;
     text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    color: rgb(244, 244, 245);
-    background-color: green;
-    border:none;
+    margin-right: 2px;
+
 }
-a:hover{
+.contenedorlink a:hover{
 
-    background-color: beige;
-    color :red;
-
-
+    background-color:white;
+    color :green;
+  
 }

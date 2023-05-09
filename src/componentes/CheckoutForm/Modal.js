@@ -1,5 +1,5 @@
 import React from 'react';
-import './../Modal/Modal.css';
+
 
 
 function Modal({ children, abierto, cerrar }) {

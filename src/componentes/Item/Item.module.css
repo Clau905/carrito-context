@@ -4,7 +4,7 @@
     flex-direction: column;
     min-width: 250px;
     max-width:250px ;
-    height:400px;
+    height:420px;
     width: 290px;
     
     padding-top: 10px;
@@ -122,9 +122,11 @@
     width:90%;
     height: 30px;
     align-items: center;
+    align-items: center;
     justify-content: center;
     color: #ffffff;
     background-color: green;
+    text-decoration: none;
     
 
     border-radius: 5px;
@@ -134,7 +136,27 @@
     border:none;
     
     }
-     button:hover{
+
+    .botonDetalle a{
+        display:flex;
+       
+        height: 30px;
+        align-items: center;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: green;
+        text-decoration: none;
+        
+    
+        border-radius: 5px;
+        cursor:pointer;
+        font-size: 14px;
+        border-radius: 5px;
+        border:none;
+        
+        }
+     a:hover{
         cursor:point;
         background-color: rgb(247, 248, 247);
         color:green;

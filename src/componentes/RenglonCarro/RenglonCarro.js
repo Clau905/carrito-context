@@ -33,11 +33,10 @@ function RenglonCarro(props){
         
             <div className={estilos.contenidocodigo}>
                 <p>{props.prod.foto} </p>  
-               
-             
+       
             </div>  
 
-            <div className={estilos.contenidoprecio}>      
+            <div className={estilos.desc}>      
                 <p>{props.prod.desc} </p>  
               
             </div>
@@ -52,12 +51,12 @@ function RenglonCarro(props){
                 <p>{props.prod.cantidad} </p>  
               
             </div>
-            <div className={estilos.contenidoitem}>      
+            <div className={estilos.subtot}>      
                 <p>${Math.round(props.prod.cantidad*props.prod.precio)} </p>  
               
             </div>
             <div className={estilos.eliminar}>
-            <button onClick={(e) => removerProd(e, props.prod, props.prod.cantidad)}> < RiDeleteBin2Fill  style={{ fontSize: 30 }}/></button>
+            <button onClick={(e) => removerProd(e, props.prod, props.prod.cantidad)}> < RiDeleteBin2Fill  style={{ fontSize: 20 }}/></button>
             </div>
 
 

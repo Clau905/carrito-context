@@ -46,14 +46,17 @@
         font-size: 1em;
         font-weight: 500;
     }
-    .carrosuperior h3{
-        font-size: 1em;
-        margin-left: 90px;
-        width:200px;
-        flex-direction: row;
-        background-color: rgb(167, 235, 229);
+    .categoria {
+        display: inline-block;
+        font-size: 20px;
+        margin-left: 10px;
+        width:70px;
+        
+       
         margin-right: 2px;
-        text-align: center;
+        margin-top: 10px;
+        text-align: left;
+        
        
     }
     .contendorlist{

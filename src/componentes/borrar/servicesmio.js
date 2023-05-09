@@ -1,5 +1,5 @@
 import { useContext,useState } from "react"; 
-import db from '../../../config/firebase';
+import db from '../../config/firebase';
 import { CarritoContext } from '../context/CarritoContext';
 import { Timestamp, writeBatch, } from 'firebase/firestore';
 import * as firebase from 'firebase/app';
