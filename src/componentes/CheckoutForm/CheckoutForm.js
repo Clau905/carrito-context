@@ -7,13 +7,13 @@ import { CrearOrdenDB } from '../Data/services/services';
 /* s */
 
 const CheckoutForm = () => {
-    const {carrito,vaciar,orden,setOrden,loading,setLoading,orderId,setOrderId }=  useContext(CarritoContext)
+    const {carrito,vaciar,loading,setLoading}=  useContext(CarritoContext)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-       useEffect(()=>{
-           
-     },[orderId])
+    const [orderId,setOrderId]=useState('');
+    const [orden,setOrden]=useState({},[],0,Timestamp.fromDate(new Date()   ) );
+  
     function Validar(){
         let mens=''; 
         let datosOk = false   
@@ -34,15 +34,14 @@ const CheckoutForm = () => {
     }
     const GuardarOrden=()=> {    
         if (Validar()===true ){ 
-      
-            setOrden( {
-               name:name,
-               phone:phone,
-               email:email,
-               items:carrito.prods,
-               total:carrito.total,
-               fecha: Timestamp.fromDate(new Date()) })
-
+    
+            // aca esta el ptoblema
+            //useState({},[],0, Timestamp.fromDate(new Date()));
+            setOrden( {name,phone,email},
+              carrito.prods,
+               carrito.total,
+               Timestamp.fromDate(new Date()) 
+            )
             console.log('carrito antes es ',name,carrito)
             console.log('la orden antes es ',orden)
             

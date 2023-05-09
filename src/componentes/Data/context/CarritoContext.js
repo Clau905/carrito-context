@@ -6,15 +6,10 @@ const CarritoContext = createContext();
 const CarritoProvider= ({children})=> {
     const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
-    const [orden,setOrden]=useState({},[],0, Timestamp.fromDate(new Date()));
     const [loading,setLoading]=useState(0);
-    const [orderId,setOrderId]=useState('');
-
-
-
+   
     const agregarProd=(prod,cantidad)=>{
-        
-        prod.cantidad=cantidad;
+                prod.cantidad=cantidad;
         if ( !estaEnCarrito(prod.id) ) {
             setCarrito({
                 prods: carrito.prods.concat(prod),
@@ -49,16 +44,9 @@ const CarritoProvider= ({children})=> {
         return (cantidad==0?false:true);
     }
     
+ 
     
-    
-    
-    
-    
-    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,orden,setOrden,loading,setLoading,orderId,setOrderId};      
-    
-
-    
-    
+    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,loading,setLoading,};      
     
     return (
         <CarritoContext.Provider  value ={data} > 

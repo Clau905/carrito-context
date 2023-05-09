@@ -42,7 +42,7 @@ export const getProds= async(categoria)=>{
     return datosAdaptados 
 }  
 
-export  const CrearOrdenDB = async(orden,carrito,vaciar,setOrden,loading,setLoading,setOrderId) => {
+export  const CrearOrdenDB = async(orden,carrito, vaciar,setOrden,loading,setLoading,setOrderId)=>{
 
   
   console.log('va a crear:' ,orden)
@@ -58,13 +58,13 @@ export  const CrearOrdenDB = async(orden,carrito,vaciar,setOrden,loading,setLoad
           })
    })
   
-  setOrderId(resp.id)
+  //setOrderId(resp.id)
  
   vaciar();
   setLoading(2);
 
 
-})
+  })
 .catch((error)=> console.log(error))
 
 }
