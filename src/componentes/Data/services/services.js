@@ -34,19 +34,22 @@ export const getProductosById= async(iD)=>{
 
 export const getProds= async(categoria)=>{
    
+   /*  const collectionRef = categoria ? query(collection(db,'productos'), where(('categ', '==', categoria.trim()) && ( 'stock','>',0))) 
+    : collection(db,'productos');
+ */
     const collectionRef = categoria ? query(collection(db,'productos'), where('categ', '==', categoria.trim())) 
     : collection(db,'productos');
+  
+      const response =await getDocs(collectionRef)  
+      const datosAdaptados=Adapter(response);
+      const inStock = datosAdaptados.filter((item)=> item.stock !== 0)
+      return  inStock
 
-    const response =await getDocs(collectionRef)  
-    const datosAdaptados=Adapter(response);
-    return datosAdaptados 
 }  
 
-export  const CrearOrdenDB = async(orden,carrito, vaciar,setOrden,loading,setLoading,setOrderId)=>{
+export  const CrearOrdenDB = async(orden,carrito, vaciar,loading,setLoading,orderId,setOrderId) =>{
 
-  
-  console.log('va a crear:' ,orden)
-  //setLoading(1);
+  setLoading(1);
   const ventas = collection(db,"orders")
   addDoc(ventas, orden)
   .then((resp) => {
@@ -57,9 +60,9 @@ export  const CrearOrdenDB = async(orden,carrito, vaciar,setOrden,loading,setLoa
              updateDoc(docRef, {stock: dbDoc.data().stock - item.cantidad})
           })
    })
-  
-  //setOrderId(resp.id)
  
+  setOrderId(resp.id)
+ alert('se ha generaado la orden ',orderId)
   vaciar();
   setLoading(2);
 

@@ -7,12 +7,18 @@ import { CrearOrdenDB } from '../Data/services/services';
 /* s */
 
 const CheckoutForm = () => {
-    const {carrito,vaciar,loading,setLoading}=  useContext(CarritoContext)
+    const {carrito,vaciar,loading,setLoading,orderId,setOrderId}=  useContext(CarritoContext)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [orderId,setOrderId]=useState('');
-    const [orden,setOrden]=useState({},[],0,Timestamp.fromDate(new Date()   ) );
+    let orden =
+        {comprador:{},
+         items:[],
+         total:0,
+         fecha :Timestamp.fromDate(new Date() )
+        }
+        
+        
   
     function Validar(){
         let mens=''; 
@@ -35,17 +41,16 @@ const CheckoutForm = () => {
     const GuardarOrden=()=> {    
         if (Validar()===true ){ 
     
-            // aca esta el ptoblema
-            //useState({},[],0, Timestamp.fromDate(new Date()));
-            setOrden( {name,phone,email},
-              carrito.prods,
-               carrito.total,
-               Timestamp.fromDate(new Date()) 
-            )
-            console.log('carrito antes es ',name,carrito)
-            console.log('la orden antes es ',orden)
+            let orden = {
+                comprador:{name,phone,email},
+                items:carrito.prods,
+                total:carrito.total,
+                fecha: Timestamp.fromDate(new Date())
+            }
             
-            CrearOrdenDB(orden,carrito, vaciar,orden,setOrden,loading,setLoading,setOrderId) 
+           
+            
+            CrearOrdenDB(orden,carrito, vaciar,loading,setLoading,orderId,setOrderId)
         } 
     }
     const handleSubmit = (e) => {

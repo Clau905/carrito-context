@@ -7,6 +7,7 @@ const CarritoProvider= ({children})=> {
     const [prod]=useState({});
     const [carrito,setCarrito]=useState({prods:[],total:0});
     const [loading,setLoading]=useState(0);
+    const [orderId,setOrderId]=useState('');;
    
     const agregarProd=(prod,cantidad)=>{
                 prod.cantidad=cantidad;
@@ -46,7 +47,7 @@ const CarritoProvider= ({children})=> {
     
  
     
-    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,loading,setLoading,};      
+    const data =  {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod,loading,setLoading,orderId,setOrderId};      
     
     return (
         <CarritoContext.Provider  value ={data} > 
