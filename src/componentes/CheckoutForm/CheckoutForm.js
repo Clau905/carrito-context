@@ -76,7 +76,7 @@ const CheckoutForm = () => {
                 onChange={(e) => setPhone(e.target.value)}
             />
             <input
-                type="mail"
+                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

@@ -8,7 +8,7 @@ import ListarPedido from './componentes/ListarPedido/ListarPedido';
 import ItemDetallado from './componentes/Itemdetallado/Itemdetallado';
 import {CarritoProvider} from './componentes/Data/context/CarritoContext';
 import Checkout from './componentes/Checkout/Checkout';
-/* import FinOrden from './componentes/FinOrden/FinOrden'; */
+
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 function App() {
     
@@ -38,7 +38,7 @@ function App() {
           <Route   path='/pedido' element= { <ListarPedido  /> } />
           <Route   path='/checkout' element= { <Checkout  /> } />
           <Route   path='/anillos/:borrar' element= {<ItemListContainer  categ = 'anillos'  />} />
-        {/*   <Route   path='/finOrden' element= { <FinOrden  /> } /> */}
+        
           </Routes>
           </div>
           </BrowserRouter>

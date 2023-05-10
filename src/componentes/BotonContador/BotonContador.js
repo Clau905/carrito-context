@@ -4,10 +4,10 @@ import { useState,useContext } from 'react';
 import  estilos   from './BotonContador.module.css';
 import {FiMinusCircle} from 'react-icons/fi';
 import {FiPlusCircle} from "react-icons/fi";
-import {CarritoContext} from '../Data/context/CarritoContext.js';
+
 
 const BotonContador = ({inicial,stock,onAdd}) => {
-    //const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+    
     const [cantidadAgregar, setCantidadAgregar] = useState(inicial); 
     const [xcantidad, setCantidad] = useState(inicial); 
     const cant=inicial;

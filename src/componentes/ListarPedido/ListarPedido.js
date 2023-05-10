@@ -7,7 +7,7 @@ import {CarritoContext} from '../Data/context/CarritoContext';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
 
 function ListarPedido(){
-    const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito}=useContext(CarritoContext);
+    const {carrito}=useContext(CarritoContext);
       
        return (
         <>

@@ -3,8 +3,6 @@ import db from '../../../config/firebase';
 import { CarritoContext } from '../context/CarritoContext';
 import { Timestamp, writeBatch, } from 'firebase/firestore';
 
-//import 'firebase/database';
-
 import {Adapter} from '../Adapter/Adapter';
 import{
     collection,
@@ -48,10 +46,7 @@ export const getProds= async(categoria)=>{
 export  const CrearOrdenDB = async(orden,carrito, vaciar,loading,setLoading,mensaje,setMensaje) =>{
 
   setLoading(1);
-  
-  
-  //let mensaje=' ...Se esta generando su pedido';
-  
+
   const ventas = collection(db,"orders")
   addDoc(ventas, orden)
   .then((resp) => {

@@ -1,11 +1,8 @@
 import estilos from './../Item/Item.module.css';
 
-
 import {Link} from 'react-router-dom';
 
 const Item =  ({iD,categ,foto, precio,}) =>  {
-
-
   return(
 
         <div className={estilos.contenedorCards}>

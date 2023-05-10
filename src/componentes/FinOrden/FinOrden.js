@@ -1,9 +1,9 @@
-import { useState,useContext,useEffect } from 'react';
+import { useContext } from 'react';
 import { CarritoContext } from '../Data/context/CarritoContext';
 import estilos from '../FinOrden/FinOrden.module.css';
 
 const FinOrden = () => {
-  const {loading,setLoading,mensaje}=useContext(CarritoContext);
+  const {mensaje}=useContext(CarritoContext);
 
   
   return (
