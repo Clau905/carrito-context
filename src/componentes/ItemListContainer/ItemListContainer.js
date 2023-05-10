@@ -1,16 +1,18 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import Item from '../../componentes/Item/Item';
 import estilos from '../ItemListContainer/ItemListContainer.module.css';
 import {CarritoContext} from '../Data/context/CarritoContext';
-import { useContext } from "react"; 
+
 import { useParams } from "react-router-dom";
 import { getProds, } from '../Data/services/services';
 
 const ItemListContainer = ({categ})=>{ 
-   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,prod}=useContext(CarritoContext);
+   const {carrito,agregarProd,removerProd,vaciar,estaEnCarrito,loading,setLoading,prod,mensaje,setMensaje}=useContext(CarritoContext);
    const {borrar}=useParams(); 
    const [prods,setProds]=useState([]);
-    
+   setLoading(0) ;
+   setMensaje('');
+   
    useEffect(()=>{
       if (borrar===undefined){}
          else{

@@ -1,0 +1,7 @@
+.fin{
+    display:flex;
+    width: 60%;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}

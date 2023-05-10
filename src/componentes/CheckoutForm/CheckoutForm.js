@@ -4,10 +4,11 @@ import {CarritoContext} from '../Data/context/CarritoContext';
 import estilos from '../CheckoutForm/CheckoutForm.module.css'
 import { Timestamp } from 'firebase/firestore';
 import { CrearOrdenDB } from '../Data/services/services';
+import FinOrden from "../FinOrden/FinOrden";
 /* s */
 
 const CheckoutForm = () => {
-    const {carrito,vaciar,loading,setLoading,orderId,setOrderId}=  useContext(CarritoContext)
+    const {carrito,vaciar,loading,setLoading,mensaje,setMensaje}=  useContext(CarritoContext)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -50,7 +51,7 @@ const CheckoutForm = () => {
             
            
             
-            CrearOrdenDB(orden,carrito, vaciar,loading,setLoading,orderId,setOrderId)
+            CrearOrdenDB(orden,carrito, vaciar,loading,setLoading,mensaje,setMensaje)
         } 
     }
     const handleSubmit = (e) => {

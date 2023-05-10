@@ -1,6 +1,6 @@
 import estilos from './../Item/Item.module.css';
 
-import { useContext,useEffect } from "react"; 
+
 import {Link} from 'react-router-dom';
 
 const Item =  ({iD,categ,foto, precio,}) =>  {

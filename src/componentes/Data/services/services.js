@@ -21,7 +21,7 @@ import{
     setData
   }
 from 'firebase/firestore';
-//const {carrito,vaciar,orden,setOrden }=  useContext(CarritoContext)
+
 
 export const getProductosById= async(iD)=>{
     const collectionRef =doc(db,'productos', iD) 
@@ -34,9 +34,7 @@ export const getProductosById= async(iD)=>{
 
 export const getProds= async(categoria)=>{
    
-   /*  const collectionRef = categoria ? query(collection(db,'productos'), where(('categ', '==', categoria.trim()) && ( 'stock','>',0))) 
-    : collection(db,'productos');
- */
+
     const collectionRef = categoria ? query(collection(db,'productos'), where('categ', '==', categoria.trim())) 
     : collection(db,'productos');
   
@@ -47,9 +45,13 @@ export const getProds= async(categoria)=>{
 
 }  
 
-export  const CrearOrdenDB = async(orden,carrito, vaciar,loading,setLoading,orderId,setOrderId) =>{
+export  const CrearOrdenDB = async(orden,carrito, vaciar,loading,setLoading,mensaje,setMensaje) =>{
 
   setLoading(1);
+  
+  
+  //let mensaje=' ...Se esta generando su pedido';
+  
   const ventas = collection(db,"orders")
   addDoc(ventas, orden)
   .then((resp) => {
@@ -61,10 +63,12 @@ export  const CrearOrdenDB = async(orden,carrito, vaciar,loading,setLoading,orde
           })
    })
  
-  setOrderId(resp.id)
- alert('se ha generaado la orden ',orderId)
+
+  
+ 
   vaciar();
   setLoading(2);
+  setMensaje(`Se ha generado la orden ${resp.id}`);
 
 
   })
