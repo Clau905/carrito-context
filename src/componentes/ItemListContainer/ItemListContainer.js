@@ -16,10 +16,8 @@ const ItemListContainer = ({categ})=>{
    useEffect(()=>{
       if (borrar===undefined){}
          else{
- 
             if (borrar.trim() ==='borrar'){
-     
-               const a =vaciar()
+              vaciar()
             }
          }   
    },[])
@@ -28,7 +26,6 @@ const ItemListContainer = ({categ})=>{
     
       const getProdsData = async () => {
          setProds( await getProds(categ));
-      
       }
       getProdsData()
            
